@@ -71,7 +71,8 @@ Types and sub types are easy to think about for basic types
 
 Each of the following resolves to true
 
-(paste into [playground](http://www.typescriptlang.org/play/) hover over the type to evaluate it)
+(view in [TypeScript Playground](http://www.typescriptlang.org/play/?ssl=3&ssc=63&pln=1&pc=1#code/C4TwDgpgBAcgrgWwEYQE4FEAewIDsAmAzgIK4hQC8UuiKqUE2eRUAhmQPxTCpwQBcUAGasANoQgBuAFChIUAPJIAVhADGwLDgIkylKAHsV64AyY62erjz5RBI8VNnhoMCADc0W5oSWqN+rgeaGbaLEb+pta80PZiEpJAA)
+ and hover over the type to evaluate it)
 
 ```typescript
 type NumberExtendsAny = number extends any? true: false;
@@ -138,27 +139,58 @@ function apply(fn: typeof f3) {
 }
 apply(f4);
 ```
-You can see here that the Higher Order function expects a function of f3 type, but it accepts a function of f4 type because f4 is a subtype of f3. 
+You can see here that the Higher Order function expects a function of f3 type, but it accepts a function of f4 type because f4 is a subtype of f3
 
-This is because the parameter of f4 is a supertype of the parameter of f3. 
+This is because the parameter of f4 is a supertype of the parameter of f3
 
-Hence we say the function is contravariant to the type of it's parameters.
+Hence we say the function is contravariant to the type of it's parameters
 ---
+### Classes and methods
+
 When it comes to classes and method overrides this means you can do things in TypeScript you can't do 
-in other languages like C++ or C#.
+in other languages like C++ or C#
+---
+
+Consider this TypeScript code
+--
+<img src="ts.png" width="97%" />
+
+--
+
+The BigPark class provides the implementation for the interfaces with 
+a function which takes Vehicle as a parameter
+
+This is perfectly valid TypeScript
+---
+Attempting the same construct in C# syntax will not compile
+--
+<img src="cs.png" width="97%" />
+--
+<img src="cs_error.png" width="97%" />
 
 ---
-Consider this TypeScript code. The BigPark class provides the implmentation for both interfaces with a single function which takes Vehicle as a parameter.
+Neither will the C++ version
+--
+<img src="cpp.png" width="97%" />
+--
+<img src="cpp_error.png" width="97%" />
 ---
-## Here is some code
+### Which is better?
+--
 
-<img src="bug.png" width="90%" />
+A Car is a Vehicle, so a function which acts on a Vehicle may be a perfectly good implementation for a function which 
+takes a Car as a parameter
 
-???
-We alias AccountCode and UserName to string
+--
 
+In some ways this is a limitation in C++ and C#
 
+--
 
+What do you think?
+--
+
+Using inheritance I can 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"> </script>
     <script> var slideshow = remark.create(); </script>

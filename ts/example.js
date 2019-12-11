@@ -24,14 +24,6 @@ var Car = /** @class */ (function (_super) {
     return Car;
 }(Vehicle));
 ;
-var Plane = /** @class */ (function (_super) {
-    __extends(Plane, _super);
-    function Plane() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return Plane;
-}(Vehicle));
-;
 var BigPark = /** @class */ (function () {
     function BigPark() {
     }
@@ -41,5 +33,5 @@ var BigPark = /** @class */ (function () {
     return BigPark;
 }());
 var park = new BigPark();
-park.park(new Car());
-park.park(new Plane());
+var carPark = park;
+carPark.park(new Car());
