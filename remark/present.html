@@ -114,11 +114,10 @@ type f4ExtendsF1 = typeof f3 extends typeof f2? true: false;
 and each of these type relationships are true
 
 ```typescript
-
-function f1(x: any) { }
-function f2(x: number) { }
-function f3(x: {a: number, b: number}) { }
-function f4(x: { a: number }) { }
+function f1(a: any) { }
+function f2(a: number) { }
+function f3(a: {x: number, y: number}) { }
+function f4(a: { x: number }) { }
 
 type f2ExtendsF1 = typeof f2 extends typeof f1? true: false;
 type f3ExtendsF1 = typeof f3 extends typeof f1? true: false;
@@ -126,12 +125,11 @@ type f4ExtendsF3 = typeof f4 extends typeof f3? true : false;
 ```
 The last line could also be written as
 ```typescript
-type FofXYExtendsFofX = typeof f3 extends typeof f2? true: false;
+type FnOfXExtendsFnfXY = typeof f4 extends typeof f3? true: false;
 ```
-Note the inverse relationship to the *object* containing X and Y
-
+Note the *inverse* relationship to the *object* containing X and Y
 ---
-Note how the following code is valid due to these relationships
+The following code is valid due to these relationships
 
 ```typescript
 function apply(fn: typeof f3) {
